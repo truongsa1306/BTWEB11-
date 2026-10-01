@@ -47,38 +47,5 @@ UPDATE orders SET status = 'CONFIRMED', updated_at = GETDATE() WHERE order_id = 
 5. `/orders`: bấm lần lượt 9 tab; đổi trạng thái bằng SQL như mục 3.
 6. Đăng nhập `binh.tran@...` thử mở `/orders/detail?id=1` (đơn của user khác) → 404.
 
-## 5. Cấu trúc mới (hậu tố `_24110317`)
-`controller`: Cart / Checkout / Order · `service`: CartService / OrderService · `dao`: CartDAO / OrderDAO · `model`: CartItem / Order / OrderItem / OrderStatus · `filter`: UserAuthFilter (bắt buộc đăng nhập cho `/cart` `/checkout` `/orders`), AppInitListener · views: `cart.jsp` `checkout.jsp` `orders.jsp` `order-detail.jsp` · tags: `add-to-cart` `money` `status-badge`.
 
-## 6. Nộp GitHub (commit theo từng chức năng)
-Chạy trong thư mục **KTQT** (thư mục chứa `pom.xml`; không đưa thư mục `demo/` lên). Tạo trước repo **rỗng** trên GitHub (không tick "Add README").
-```bash
-git init -b main
-git config user.name  "Tên của bạn"
-git config user.email "email-github-cua-ban@example.com"
-
-# --- Commit 1: giỏ hàng (hạn 10g45 1/10/2026) ---
-git add -A
-git reset -q -- src/main/java/vn/iotstar/model/Order_24110317.java src/main/java/vn/iotstar/model/OrderItem_24110317.java \
-  src/main/java/vn/iotstar/model/OrderStatus_24110317.java src/main/java/vn/iotstar/dao/OrderDAO_24110317.java \
-  src/main/java/vn/iotstar/service/OrderService_24110317.java src/main/java/vn/iotstar/controller/CheckoutController_24110317.java \
-  src/main/java/vn/iotstar/controller/OrderController_24110317.java src/main/webapp/WEB-INF/views/checkout.jsp \
-  src/main/webapp/WEB-INF/views/orders.jsp src/main/webapp/WEB-INF/views/order-detail.jsp src/main/webapp/WEB-INF/tags/status-badge.tag
-git commit -m "feat(user): chuc nang gio hang (them/xoa/sua so luong, gioi han ton kho)"
-git remote add origin https://github.com/<ten-ban>/<ten-repo>.git
-git push -u origin main
-
-# --- Commit 2: thanh toan COD (hạn 10g45 1/10/2026) ---
-git add src/main/java/vn/iotstar/model/Order_24110317.java src/main/java/vn/iotstar/model/OrderItem_24110317.java \
-  src/main/java/vn/iotstar/model/OrderStatus_24110317.java src/main/java/vn/iotstar/dao/OrderDAO_24110317.java \
-  src/main/java/vn/iotstar/service/OrderService_24110317.java src/main/java/vn/iotstar/controller/CheckoutController_24110317.java \
-  src/main/webapp/WEB-INF/views/checkout.jsp
-git commit -m "feat(user): thanh toan don hang bang COD"
-git push
-
-# --- Commit 3: lich su don hang (hạn 22g45 5/10/2026) ---
-git add -A
-git commit -m "feat(user): lich su don hang loc theo trang thai + chi tiet/huy don"
-git push
-```
 
