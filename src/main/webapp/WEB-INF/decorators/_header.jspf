@@ -1,0 +1,28 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="${pageContext.request.contextPath}/home">📚 BookStore</a>
+        <nav class="main-nav">
+            <a href="${pageContext.request.contextPath}/home">Trang Chủ</a>
+            <a href="${pageContext.request.contextPath}/products">Sản phẩm</a>
+            <c:if test="${not empty sessionScope.user and not sessionScope.user.admin}">
+                <a href="${pageContext.request.contextPath}/cart">🛒 Giỏ hàng<c:if test="${sessionScope.cartCount gt 0}"> <span class="cart-badge">${sessionScope.cartCount}</span></c:if></a>
+                <a href="${pageContext.request.contextPath}/orders">Đơn hàng</a>
+            </c:if>
+            <c:choose>
+                <c:when test="${empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                </c:otherwise>
+            </c:choose>
+            <c:if test="${sessionScope.user.admin}">
+                <a class="admin-link" href="${pageContext.request.contextPath}/admin/books">Trang quản trị</a>
+            </c:if>
+        </nav>
+        <c:if test="${not empty sessionScope.user}">
+            <span class="user-badge">👤 <c:out value="${sessionScope.user.displayName}"/> <em>${sessionScope.user.role}</em></span>
+        </c:if>
+    </div>
+</header>

@@ -1,0 +1,11 @@
+# OPEN_QUESTIONS – giả định đã chọn
+- Home: mỗi trang = 1 tác giả + tối đa 3 sách của tác giả đó (tác giả n sách chiếm ceil(n/3) trang); sách nhiều tác giả xuất hiện dưới từng tác giả.
+- Giữ isbn/phone INT, price DECIMAL(6,2) (tối đa 9999.99) đúng đề; passwd mở rộng VARCHAR(255) để lưu hash PBKDF2.
+- Bổ sung ngoài đề: users.is_active, bảng otp_codes (kích hoạt bằng OTP).
+- rating có PK (userid, bookid): mỗi user 1 review/sách, gửi lại = cập nhật. Form review có thêm chọn số sao.
+- "Sản phẩm" = danh sách phẳng 6 sách/trang. Admin CRUD 5 sách/trang.
+- Đề ghi "Câu 6" sau Câu 4 (không có Câu 5): coi như CRUD Books.
+- Họ tên trong footer để placeholder "[Điền họ tên sinh viên]" (footer: WEB-INF/decorators/_footer.jspf).
+- OTP: cấu hình SMTP ở mail.properties; nếu gửi lỗi/chưa cấu hình, OTP in ra console server (mail.log-otp=true).
+- [Claude 3] DB: đề dùng ảnh SSMS (SQL Server) nhưng không ghi bắt buộc; ZIP2 chưa có. Giữ MySQL cho tới khi sinh viên xác nhận.
+- [Claude 3] DB đã xác nhận SQL Server. Giả định: databaseName=BookStore, port 1433, SQL Server >= 2017; text->NVARCHAR(MAX), varchar->NVARCHAR cho cột tiếng Việt.
