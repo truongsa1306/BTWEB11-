@@ -81,4 +81,4 @@ git add -A
 git commit -m "feat(user): lich su don hang loc theo trang thai + chi tiet/huy don"
 git push
 ```
-Nộp link repo lên UTEx LMS. Nên đặt repo ở chế độ cho giảng viên truy cập được (Public hoặc mời giảng viên).
+
